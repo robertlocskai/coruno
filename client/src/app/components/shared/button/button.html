@@ -1,0 +1,38 @@
+<button
+  [ngClass]="{
+    'transition-all cursor-pointer disabled:cursor-auto px-3 rounded-md border border-[rgba(0,0,0,0.03)] flex gap-2 justify-between items-center h-[36px] disabled:opacity-75': true,
+    'bg-primary hover:bg-primary-hover disabled:hover:bg-primary shadow-field':
+      color === 'primary',
+    'bg-secondary-faded hover:bg-secondary-hover disabled:hover:bg-secondary-faded border-none':
+      color === 'secondary',
+    'bg-white hover:bg-gray-100 disabled:hover:bg-white shadow-field':
+      color === 'white',
+    'bg-danger hover:bg-danger-hover disabled:hover:bg-danger text-white shadow-field':
+      color === 'danger',
+    'w-full': width === 'full',
+    'h-[44px]': size === 'large'
+  }"
+  (click)="onClick.emit()"
+  [disabled]="disabled || loading"
+>
+  @if(!loading) {
+  <ng-content select="[icon-left]">
+    @if(width === 'full') {
+    <span class="m-0 p-0 w-0"></span>
+    }
+  </ng-content>
+  }
+  <ng-content></ng-content>
+  @if(!loading) {
+  <ng-content select="[icon-right]">
+    @if(width === 'full') {
+    <span class="m-0 p-0 w-0"></span>
+    }
+  </ng-content>
+  } @else {
+  <lucide-angular
+    [img]="LoaderCircleIcon"
+    class="animate-[spin_1.4s_linear_infinite]"
+  ></lucide-angular>
+  }
+</button>

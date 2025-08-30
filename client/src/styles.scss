@@ -1,1 +1,33 @@
 @import "tailwindcss";
+
+@theme {
+  //COLORS
+  --color-primary: oklch(0.8837 0.1249 86.33);
+  --color-primary-hover: oklch(0.9037 0.1249 86.33);
+
+  --color-secondary: oklch(0.937 0.0724 87.27);
+  --color-secondary-faded: oklch(0.937 0.0724 87.27 / 0.45);
+  --color-secondary-hover: oklch(0.937 0.0724 87.27 / 0.65);
+
+  --color-accent: oklch(0.7829 0.1571 61.31);
+  --color-body: oklch(0.9923 0.0025 48.72);
+  --color-text: oklch(0.325 0 0);
+
+  --color-primary-dark: oklch(0.8837 0.1249 86.33);
+  --color-secondary-dark: oklch(0.937 0.0724 87.27);
+  --color-accent-dark: oklch(0.7829 0.1571 61.31);
+  --color-body-dark: oklch(0.2219 0.0134 93.96);
+  --color-text-dark: oklch(0.9923 0.0025 48.72);
+
+  --color-danger: oklch(0.6192 0.1694 25.05);
+  --color-danger-hover: oklch(0.5892 0.1694 25.05);
+
+  //SHADOW
+  --shadow-field: 0 1px 7px rgba(0, 0, 0, 0.06);
+}
+
+body {
+  font-family: "Helvetica";
+  font-size: 14px;
+  color: var(--color-text);
+}
