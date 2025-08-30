@@ -1,0 +1,18 @@
+<div
+  class="h-[36px] px-3 border border-[rgba(0,0,0,0.04)] rounded-md shadow-field flex justify-between items-center gap-3 transition"
+  [ngClass]="{
+    'h-[44px]': size === 'large',
+    'w-fit': width === 'auto',
+    'border-danger text-danger': invalid
+  }"
+>
+  <div class="flex justify-center items-center w-full h-full gap-3">
+    <ng-content select="[icon-left]"> </ng-content>
+    <input
+      [type]="type"
+      placeholder="Test..."
+      class="outline-none border-none bg-transparent h-full w-full placeholder-[#BBBBBB]"
+    />
+  </div>
+  <ng-content select="[icon-right]"> </ng-content>
+</div>

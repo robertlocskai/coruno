@@ -37,3 +37,20 @@
 >
   <lucide-angular [img]="ArrowLeft" icon-left></lucide-angular>
 </cno-button>
+
+<cno-input-field [type]="visible ? 'text' : 'password'">
+  <button
+    class="cursor-pointer text-gray-300 hover:text-gray-700"
+    (click)="visible = !visible"
+    icon-right
+  >
+    <lucide-angular [img]="visible ? EyeIcon : EyeClosedIcon"></lucide-angular>
+  </button>
+</cno-input-field>
+
+<cno-input-field size="large">
+  <lucide-angular [img]="SearchIcon" icon-left></lucide-angular
+></cno-input-field>
+<cno-input-field>
+  <lucide-angular [img]="SearchIcon" icon-left></lucide-angular
+></cno-input-field>
