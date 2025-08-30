@@ -1,0 +1,86 @@
+<div
+  class="fixed w-96 bg-body dark:bg-body-dark border-r border-[rgba(0,0,0,0.07)] dark:border-border-dark py-8 h-screen transition-all"
+  [ngClass]="{
+    'px-5': sidebarOpen,
+    '-translate-x-1/1 md:translate-x-0 md:w-16 flex flex-col items-center':
+      !sidebarOpen
+  }"
+>
+  <div
+    class="bg-contain bg-no-repeat mb-8 transition-all h-7"
+    [ngClass]="{
+      'bg-[url(assets/images/Coruno.png)] dark:bg-[url(assets/images/Coruno_white.png)]':
+        sidebarOpen,
+      'bg-[url(assets/images/Coruno_logo.png)] dark:bg-[url(assets/images/Coruno_logo.png)] w-7':
+        !sidebarOpen
+    }"
+  ></div>
+  <div class="flex flex-col gap-1">
+    @for(option of options; track option) {
+    <button
+      class="py-2 cursor-pointer hover:bg-[rgba(0,0,0,0.04)] dark:hover:bg-input-dark dark:text-secondary rounded-md flex flex-col transition-all"
+      [ngClass]="{
+        'px-4': sidebarOpen,
+        'min-h-10 w-10 flex items-center justify-center': !sidebarOpen,
+        'bg-[rgba(0,0,0,0.04)] dark:bg-input-dark': option.isOpen
+      }"
+      (click)="
+        option.children && option.children.length > 0
+          ? toggleOption(option)
+          : option.action?.()
+      "
+      type="button"
+    >
+      <div class="flex justify-between items-center gap-3">
+        <div class="flex items-center gap-3">
+          <lucide-angular [img]="option.icon"></lucide-angular>
+          <span
+            [ngClass]="{
+              block: sidebarOpen,
+              hidden: !sidebarOpen
+            }"
+            >{{ option.label }}</span
+          >
+        </div>
+        @if(option.children && option.children.length > 0 && sidebarOpen) {
+        <lucide-angular
+          [img]="ChevronDown"
+          class="transition-transform"
+          [ngClass]="{
+            'rotate-180': option.isOpen
+          }"
+        ></lucide-angular>
+        }
+      </div>
+      @if(option.children && option.children.length > 0 && option.isOpen) {
+      <div class="flex flex-col mt-3">
+        @for(child of option.children; track child) {
+        <button
+          class="flex items-center gap-2 hover:bg-[rgba(0,0,0,0.04)] dark:hover:bg-placeholder-dark rounded-md cursor-pointer"
+          [ngClass]="{
+            'py-1 px-2': sidebarOpen,
+            'w-8 h-8 justify-center': !sidebarOpen
+          }"
+          (click)="$event.stopPropagation(); child.action?.()"
+          type="button"
+        >
+          <lucide-angular [img]="child.icon" class="h-5"></lucide-angular>
+          <span
+            [ngClass]="{
+              block: sidebarOpen,
+              hidden: !sidebarOpen
+            }"
+            >{{ child.label }}</span
+          >
+        </button>
+        }
+      </div>
+      }
+    </button>
+    }
+  </div>
+</div>
+<div
+  class="hidden md:block"
+  [ngClass]="{ 'w-96': sidebarOpen, 'w-16': !sidebarOpen }"
+></div>

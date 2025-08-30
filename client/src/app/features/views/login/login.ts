@@ -8,6 +8,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'cno-login',
@@ -17,6 +18,7 @@ import {
 })
 export class Login {
   private readonly fb = inject(FormBuilder);
+  private readonly router = inject(Router);
 
   readonly EyeIcon = EyeIcon;
   readonly EyeClosedIcon = EyeClosedIcon;
@@ -38,7 +40,7 @@ export class Login {
   login(): void {
     this.form.markAllAsTouched();
     if (this.form.valid) {
-      console.log(this.form.value);
+      this.router.navigate(['app/dashboard']);
     }
   }
 }

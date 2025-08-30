@@ -1,0 +1,11 @@
+<cno-workspace-navbar
+  (toggleSidebar)="sidebarOpen = !sidebarOpen"
+></cno-workspace-navbar>
+<div class="flex">
+  <cno-sidebar [sidebarOpen]="sidebarOpen"></cno-sidebar>
+  <cno-container
+    class="flex-1 max-w-full overflow-x-hidden overflow-y-auto break-normal"
+  >
+    <router-outlet></router-outlet>
+  </cno-container>
+</div>
