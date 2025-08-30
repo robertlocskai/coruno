@@ -24,4 +24,5 @@ export class Button {
   @Input() width: ButtonWidth = 'auto';
   @Input() disabled: boolean = false;
   @Input() loading: boolean = false;
+  @Input() iconBtn: boolean = false;
 }

@@ -1,6 +1,8 @@
 <button
   [ngClass]="{
-    'transition-all cursor-pointer disabled:cursor-auto px-3 rounded-md border border-[rgba(0,0,0,0.03)] flex gap-2 justify-between items-center h-[36px] disabled:opacity-75': true,
+    'transition-all cursor-pointer disabled:cursor-auto px-3 rounded-md border border-[rgba(0,0,0,0.03)] flex gap-2 items-center h-[36px] disabled:opacity-75': true,
+    'justify-between': !iconBtn,
+    'justify-center': iconBtn,
     'bg-primary hover:bg-primary-hover disabled:hover:bg-primary shadow-field':
       color === 'primary',
     'bg-secondary-faded hover:bg-secondary-hover disabled:hover:bg-secondary-faded border-none':
@@ -10,7 +12,9 @@
     'bg-danger hover:bg-danger-hover disabled:hover:bg-danger text-white shadow-field':
       color === 'danger',
     'w-full': width === 'full',
-    'h-[44px]': size === 'large'
+    'h-[44px]': size === 'large',
+    'w-[36px] px-0': size === 'normal' && iconBtn,
+    'w-[44px] px-0': size === 'large' && iconBtn,
   }"
   (click)="onClick.emit()"
   [disabled]="disabled || loading"
