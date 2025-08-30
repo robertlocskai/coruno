@@ -7,7 +7,8 @@ export type InputType =
   | 'email'
   | 'date'
   | 'tel'
-  | 'number';
+  | 'number'
+  | 'checkbox';
 
 export type InputSize = 'normal' | 'large';
 export type InputWidth = 'full' | 'auto';
@@ -23,4 +24,7 @@ export class InputField {
   @Input() size: InputSize = 'normal';
   @Input() width: InputWidth = 'auto';
   @Input() invalid: boolean = false;
+  @Input() placeholder?: string;
+  @Input() id?: string;
+  @Input() label?: string;
 }
