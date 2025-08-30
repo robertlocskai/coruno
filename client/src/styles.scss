@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 @theme {
   //COLORS
   --color-primary: oklch(0.8837 0.1249 86.33);
@@ -13,11 +15,15 @@
   --color-body: oklch(0.9923 0.0025 48.72);
   --color-text: oklch(0.325 0 0);
 
+  //DARK
   --color-primary-dark: oklch(0.8837 0.1249 86.33);
   --color-secondary-dark: oklch(0.937 0.0724 87.27);
   --color-accent-dark: oklch(0.7829 0.1571 61.31);
   --color-body-dark: oklch(0.2219 0.0134 93.96);
   --color-text-dark: oklch(0.9923 0.0025 48.72);
+  --color-border-dark: oklch(0.3446 0.0223 92.97);
+  --color-input-dark: oklch(0.2469 0.0165 96.97);
+  --color-placeholder-dark: oklch(0.5071 0.0223 90.67);
 
   --color-danger: oklch(0.6192 0.1694 25.05);
   --color-danger-hover: oklch(0.5892 0.1694 25.05);
@@ -27,8 +33,6 @@
 }
 
 body {
-  background-color: var(--color-body);
   font-family: "Helvetica";
   font-size: 14px;
-  color: var(--color-text);
 }

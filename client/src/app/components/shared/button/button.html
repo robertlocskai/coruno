@@ -1,8 +1,8 @@
 <button
   [ngClass]="{
-    'transition-all cursor-pointer disabled:cursor-auto px-3 rounded-md border border-[rgba(0,0,0,0.03)] flex gap-2 items-center h-[36px] disabled:opacity-75': true,
+    'transition-all cursor-pointer disabled:cursor-auto px-3 rounded-md border border-[rgba(0,0,0,0.03)] flex gap-2 items-center h-[36px] disabled:opacity-75 text-text': true,
     'justify-between': !iconBtn,
-    'justify-center': iconBtn,
+    'justify-center': iconBtn || loading,
     'bg-primary hover:bg-primary-hover disabled:hover:bg-primary shadow-field':
       color === 'primary',
     'bg-secondary-faded hover:bg-secondary-hover disabled:hover:bg-secondary-faded border-none':
@@ -18,16 +18,16 @@
   }"
   (click)="onClick.emit()"
   [disabled]="disabled || loading"
+  [type]="type"
 >
   @if(!loading) {
+
   <ng-content select="[icon-left]">
     @if(width === 'full') {
     <span class="m-0 p-0 w-0"></span>
     }
   </ng-content>
-  }
   <ng-content></ng-content>
-  @if(!loading) {
   <ng-content select="[icon-right]">
     @if(width === 'full') {
     <span class="m-0 p-0 w-0"></span>

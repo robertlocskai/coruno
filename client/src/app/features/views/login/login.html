@@ -1,39 +1,56 @@
 <div class="h-screen flex justify-center items-center">
   <div
-    class="absolute h-full w-full bg-[url('assets/images/black_dot.png')] bg-size-[40px] -z-10 opacity-10"
+    class="absolute h-full w-full bg-[url('assets/images/black_dot.png')] dark:bg-[url('assets/images/white_dot.png')] bg-size-[40px] -z-10 opacity-10 dark:opacity-[0.07]"
+  ></div>
+
+  <div
+    class="hidden dark:block absolute bg-primary w-70 h-70 -z-10 blur-2xl opacity-30"
   ></div>
   <div
-    class="bg-body border border-[rgba(0,0,0,0.07)] shadow-field rounded-md p-6 w-full sm:w-fit mx-1"
+    class="bg-body dark:bg-body-dark border border-[rgba(0,0,0,0.07)] dark:border-border-dark shadow-field rounded-md p-6 w-full sm:w-fit mx-1"
   >
-    <img src="assets/images/Coruno.png" alt="Logo" class="h-6 mb-2" />
+    <div
+      class="h-6 mb-2 bg-[url('assets/images/Coruno.png')] dark:bg-[url('assets/images/Coruno_white.png')] bg-contain bg-no-repeat"
+    ></div>
     <span class="text-gray-400">Log in into your account.</span>
-    <div class="flex flex-col gap-3 mt-4 sm:w-80">
-      <cno-input-field
-        placeholder="E-mail"
-        width="full"
-        type="email"
-      ></cno-input-field>
-      <cno-input-field
-        placeholder="Password"
-        width="full"
-        [type]="passwordVisible ? 'text' : 'password'"
-      >
-        <button
-          icon-right
-          class="cursor-pointer text-gray-200 hover:text-gray-400"
-          (click)="passwordVisible = !passwordVisible"
+    <form (ngSubmit)="login()" [formGroup]="form">
+      <div class="flex flex-col gap-3 mt-4 sm:w-80">
+        <cno-input-field
+          [disabled]="loading"
+          placeholder="E-mail"
+          width="full"
+          type="email"
+          [control]="form.controls.email"
+        ></cno-input-field>
+        <cno-input-field
+          [disabled]="loading"
+          placeholder="Password"
+          width="full"
+          [type]="passwordVisible ? 'text' : 'password'"
+          [control]="form.controls.password"
         >
-          <lucide-angular
-            [img]="passwordVisible ? EyeIcon : EyeClosedIcon"
-          ></lucide-angular>
-        </button>
-      </cno-input-field>
-      <cno-button width="full">Sign in</cno-button>
-      <div class="flex justify-between items-center">
-        <cno-input-field type="checkbox" label="Remember me"></cno-input-field>
-        <span class="text-primary cursor-pointer">Forgot your password?</span>
+          <button
+            icon-right
+            class="cursor-pointer text-gray-200 hover:text-gray-400 dark:text-placeholder-dark dark:hover:text-gray-100"
+            (click)="passwordVisible = !passwordVisible"
+          >
+            <lucide-angular
+              [img]="passwordVisible ? EyeIcon : EyeClosedIcon"
+            ></lucide-angular>
+          </button>
+        </cno-input-field>
+        <cno-button width="full" [loading]="loading" type="submit"
+          >Sign in</cno-button
+        >
+        <div class="flex justify-between items-center">
+          <cno-input-field
+            type="checkbox"
+            label="Remember me"
+          ></cno-input-field>
+          <span class="text-primary cursor-pointer">Forgot your password?</span>
+        </div>
       </div>
-    </div>
+    </form>
 
     <div class="text-center mt-6 text-gray-400">
       Don’t have an account?

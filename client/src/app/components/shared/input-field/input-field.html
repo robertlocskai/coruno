@@ -2,29 +2,37 @@
 <div class="flex items-center gap-2">
   <input
     type="checkbox"
-    class="border appearance-none border-[rgba(0,0,0,0.08)] bg-[#FBFBFB] cursor-pointer transition hover:border-primary rounded-md shadow-field h-5 w-5 relative accent-primary checked:bg-primary checked:border-primary checked:before:content-['✔'] checked:before:absolute checked:before:translate-x-[3px] checked:before:text-white checked:before:text-sm"
+    class="border appearance-none border-[rgba(0,0,0,0.08)] dark:border-border-dark bg-[#FBFBFB] dark:bg-input-dark cursor-pointer transition disabled:opacity-80 enabled:hover:border-primary rounded-md shadow-field h-5 w-5 relative accent-primary checked:bg-primary checked:border-primary checked:before:content-['✔'] checked:before:absolute checked:before:translate-x-[3px] checked:before:text-white dark:checked:before:text-black checked:before:text-sm"
     id="check"
+    [disabled]="disabled"
   />
-  <label for="check" class="translate-y-[2px] cursor-pointer"
+  <label for="check" class="translate-y-[1px] cursor-pointer"
     >Remember me</label
   >
 </div>
 } @default {
 <div
-  class="h-[36px] px-3 border border-[rgba(0,0,0,0.04)] rounded-md shadow-field flex justify-between items-center gap-3 transition hover:border-primary"
+  class="h-[36px] px-3 border rounded-md shadow-field flex justify-between items-center gap-3 transition dark:bg-input-dark"
   [ngClass]="{
+    'border-[rgba(0,0,0,0.04)] dark:border-border-dark':
+      !disabled && !(control.invalid && control.touched),
     'h-[44px]': size === 'large',
     'w-fit': width === 'auto',
-    'border-danger text-danger': invalid
+    'border-danger text-danger':
+      invalid || (control.invalid && control.touched),
+    'hover:border-primary': !disabled && !(control.invalid && control.touched),
+    'opacity-80': disabled
   }"
 >
   <div class="flex justify-center items-center w-full h-full gap-3">
     <ng-content select="[icon-left]"> </ng-content>
     <input
-      [id]="id"
+      [formControl]="control"
+      [attr.id]="id"
+      [disabled]="disabled"
       [type]="type"
       [placeholder]="placeholder"
-      class="outline-none border-none bg-transparent h-full w-full placeholder-[#BBBBBB]"
+      class="outline-none border-none bg-transparent h-full w-full placeholder-[#BBBBBB] dark:placeholder-placeholder-dark disabled:text-placeholder-dark"
     />
   </div>
   <ng-content select="[icon-right]"> </ng-content>
