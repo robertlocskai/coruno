@@ -1,0 +1,19 @@
+<div class="flex flex-col gap-5">
+  <div class="mt-8 flex justify-between gap-2 items-center">
+    <h2 class="font-bold text-2xl">{{ title }}</h2>
+    <div class="flex gap-2 items-center">
+      @for(button of buttons; track button) {
+      <cno-button (onClick)="button.action?.()" [color]="button.color">
+        @if(button.icon) {
+
+        <lucide-angular [img]="button.icon" icon-left></lucide-angular>
+        }
+        {{ button.text }}
+      </cno-button>
+      }
+    </div>
+  </div>
+  <div class="min-w-0 overflow-hidden">
+    <ng-content></ng-content>
+  </div>
+</div>

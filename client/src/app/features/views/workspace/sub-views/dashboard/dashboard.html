@@ -1,4 +1,12 @@
-Consectetur exercitation non reprehenderit est excepteur cupidatat id. Proident
-adipisicing tempor sint eu aliqua commodo. In quis tempor est ut velit est ea
-enim incididunt excepteur deserunt reprehenderit ad. Qui deserunt nostrud
-laboris aliquip.
+<div class="flex gap-5">
+  <div class="flex-1 min-w-0">
+    <cno-layout title="Dashboard" [buttons]="buttons">
+      <div class="flex gap-2 overflow-x-auto pb-2">
+        @for(card of statCards; track card) {
+        <cno-statistic-card [data]="card"></cno-statistic-card>
+        }
+      </div>
+    </cno-layout>
+  </div>
+  <div class="w-80">asd</div>
+</div>
