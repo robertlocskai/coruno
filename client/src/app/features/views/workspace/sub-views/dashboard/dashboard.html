@@ -1,12 +1,20 @@
 <div class="flex gap-5">
   <div class="flex-1 min-w-0">
     <cno-layout title="Dashboard" [buttons]="buttons">
-      <div class="flex gap-2 overflow-x-auto pb-2">
+      <div class="flex gap-2 overflow-x-auto pb-2 relative">
+        <button
+          class="aspect-square h-25 rounded-md transition bg-body dark:bg-body-dark border border-dashed flex justify-center items-center border-border dark:border-border-dark text-placeholder-dark dark:hover:text-primary border-2 cursor-pointer hover:border-primary"
+        >
+          <div class="flex flex-col gap-1 items-center">
+            <lucide-angular [img]="SquarePlus"></lucide-angular>
+            New card
+          </div>
+        </button>
         @for(card of statCards; track card) {
         <cno-statistic-card [data]="card"></cno-statistic-card>
         }
       </div>
     </cno-layout>
   </div>
-  <div class="w-80">asd</div>
+  <div class="w-80 bg-gray-100">asd</div>
 </div>

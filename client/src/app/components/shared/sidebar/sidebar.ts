@@ -13,8 +13,9 @@ import {
   Settings,
   Users,
   ChevronDown,
-  Folder,
   Files,
+  FolderOpen,
+  FolderPen,
 } from 'lucide-angular';
 
 export interface SidebarOption {
@@ -65,11 +66,11 @@ export class Sidebar {
         },
         {
           label: 'Budakeszi napelempark',
-          icon: Folder,
+          icon: FolderOpen,
         },
         {
           label: 'Gúta napelempark',
-          icon: Folder,
+          icon: FolderPen,
         },
       ],
     },

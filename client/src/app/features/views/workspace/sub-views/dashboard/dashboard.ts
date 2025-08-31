@@ -3,7 +3,13 @@ import {
   Layout,
   LayoutButton,
 } from '../../../../../components/shared/layout/layout';
-import { Plus, PencilRuler, Bug } from 'lucide-angular';
+import {
+  Plus,
+  PencilRuler,
+  Bug,
+  LucideAngularModule,
+  SquarePlus,
+} from 'lucide-angular';
 import {
   StatisticCard,
   StatisticCardData,
@@ -11,11 +17,13 @@ import {
 
 @Component({
   selector: 'cno-dashboard',
-  imports: [Layout, StatisticCard],
+  imports: [Layout, StatisticCard, LucideAngularModule],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })
 export class Dashboard {
+  SquarePlus = SquarePlus;
+
   buttons: LayoutButton[] = [
     {
       text: 'Add new widget',
