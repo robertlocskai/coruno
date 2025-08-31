@@ -28,6 +28,15 @@
   --color-danger: oklch(0.6192 0.1694 25.05);
   --color-danger-hover: oklch(0.5892 0.1694 25.05);
 
+  --color-danger-bg: oklch(0.971 0.013 17.38 / 0.8);
+  --color-danger-text: oklch(0.505 0.213 27.518);
+  --color-warning-bg: oklch(0.987 0.026 102.212 / 0.8);
+  --color-warning-text: oklch(0.554 0.135 66.442);
+  --color-info-bg: oklch(0.97 0.014 254.604 / 0.8);
+  --color-info-text: oklch(0.488 0.243 264.376);
+  --color-success-bg: oklch(0.982 0.018 155.826 / 0.8);
+  --color-success-text: oklch(0.527 0.154 150.069);
+
   //SHADOW
   --shadow-field: 0 1px 7px rgba(0, 0, 0, 0.06);
 }
