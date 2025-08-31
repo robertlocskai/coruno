@@ -11,14 +11,14 @@
     [ngClass]="{
       'bg-[url(assets/images/Coruno.png)] dark:bg-[url(assets/images/Coruno_white.png)]':
         sidebarOpen,
-      'bg-[url(assets/images/Coruno_logo.png)] dark:bg-[url(assets/images/Coruno_logo.png)] w-7':
+      'bg-[url(assets/images/Coruno_logo.png)] dark:bg-[url(assets/images/Coruno_logo_white.png)] w-7':
         !sidebarOpen
     }"
   ></div>
   <div class="flex flex-col gap-1">
     @for(option of options; track option) {
     <button
-      class="py-2 cursor-pointer hover:bg-[rgba(0,0,0,0.04)] dark:hover:bg-input-dark dark:text-secondary rounded-md flex flex-col transition-all"
+      class="group py-2 cursor-pointer hover:bg-[rgba(0,0,0,0.04)] dark:hover:bg-input-dark dark:text-secondary rounded-md flex flex-col transition-all relative"
       [ngClass]="{
         'px-4': sidebarOpen,
         'min-h-10 w-10 flex items-center justify-center': !sidebarOpen,
@@ -31,6 +31,14 @@
       "
       type="button"
     >
+      <div
+        class="absolute self-start ml-14 py-1 top-[8px] inline-flex items-center rounded-md bg-gray-50 px-2 text-xs font-medium text-gray-600 inset-ring inset-ring-gray-500/10 opacity-0 pointer-events-none transition-opacity"
+        [ngClass]="{
+          'group-hover:opacity-100': !sidebarOpen
+        }"
+      >
+        {{ option.label }}
+      </div>
       <div class="flex justify-between items-center gap-3">
         <div class="flex items-center gap-3">
           <lucide-angular [img]="option.icon"></lucide-angular>
@@ -56,7 +64,7 @@
       <div class="flex flex-col mt-3">
         @for(child of option.children; track child) {
         <button
-          class="flex items-center gap-2 hover:bg-[rgba(0,0,0,0.04)] dark:hover:bg-placeholder-dark rounded-md cursor-pointer"
+          class="group/child relative flex items-center gap-2 hover:bg-[rgba(0,0,0,0.04)] dark:hover:bg-placeholder-dark rounded-md cursor-pointer"
           [ngClass]="{
             'py-1 px-2': sidebarOpen,
             'w-8 h-8 justify-center': !sidebarOpen
@@ -64,6 +72,14 @@
           (click)="$event.stopPropagation(); child.action?.()"
           type="button"
         >
+          <div
+            class="group-hover/child:opacity-100 absolute whitespace-nowrap left-full ml-5 py-1 top-[4px] inline-flex items-center rounded-md bg-gray-50 px-2 text-xs font-medium text-gray-600 inset-ring inset-ring-gray-500/10 opacity-0 pointer-events-none transition-opacity"
+            [ngClass]="{
+              'group-hover/child:opacity-100': !sidebarOpen
+            }"
+          >
+            {{ child.label }}
+          </div>
           <lucide-angular [img]="child.icon" class="h-5"></lucide-angular>
           <span
             [ngClass]="{

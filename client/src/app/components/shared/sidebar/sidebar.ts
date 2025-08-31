@@ -14,6 +14,7 @@ import {
   Users,
   ChevronDown,
   Folder,
+  Files,
 } from 'lucide-angular';
 
 export interface SidebarOption {
@@ -56,11 +57,19 @@ export class Sidebar {
           },
         },
         {
-          label: 'Add new',
+          label: 'Create form draft',
           icon: Plus,
           action: () => {
             console.log('Add new');
           },
+        },
+        {
+          label: 'Budakeszi napelempark',
+          icon: Folder,
+        },
+        {
+          label: 'Gúta napelempark',
+          icon: Folder,
         },
       ],
     },
@@ -86,7 +95,7 @@ export class Sidebar {
     },
     {
       label: 'Documents',
-      icon: Folder,
+      icon: Files,
     },
     {
       label: 'Settings',
