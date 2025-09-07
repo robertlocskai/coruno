@@ -9,20 +9,26 @@ import {
   Bug,
   LucideAngularModule,
   SquarePlus,
+  Grid2x2X,
 } from 'lucide-angular';
 import {
   StatisticCard,
   StatisticCardData,
 } from '../../../../../components/dashboard/statistic-card/statistic-card';
+import {
+  WidgetData,
+  Widget,
+} from '../../../../../components/dashboard/widget/widget';
 
 @Component({
   selector: 'cno-dashboard',
-  imports: [Layout, StatisticCard, LucideAngularModule],
+  imports: [Layout, StatisticCard, LucideAngularModule, Widget],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })
 export class Dashboard {
   SquarePlus = SquarePlus;
+  Grid2x2X = Grid2x2X;
 
   buttons: LayoutButton[] = [
     {
@@ -44,4 +50,6 @@ export class Dashboard {
       icon: Bug,
     },
   ];
+
+  widgets: WidgetData[] = [];
 }
